@@ -1,0 +1,42 @@
+{
+    "useTabs": false,
+    "tabWidth": 4,
+    "printWidth": 100,
+    "bracketSpacing": true,
+    "semi": true,
+    "quoteProps": "preserve",
+    "bracketSameLine": true,
+    "arrowParens": "avoid",
+    "proseWrap": "always",
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "tabWidth": 2,
+                "printWidth": 2000
+            }
+        }
+    ],
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "trailingComma": "all",
+    "embeddedLanguageFormatting": "auto",
+    "import/order": [
+        "error",
+        {
+            "groups": [
+                "builtin",
+                "external",
+                "internal",
+                "parent",
+                "sibling",
+                "index"
+            ],
+            "newlines-between": "always",
+            "alphabetize": {
+                "order": "asc",
+                "caseInsensitive": true
+            }
+        }
+    ]
+}

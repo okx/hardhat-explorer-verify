@@ -1,0 +1,25 @@
+{
+    "timeout": 10000,
+    "require": [
+        "chai"
+    ],
+    "spec": [
+        "tests/**/*.spec.ts",
+        "tests/**/*.coffee",
+        "src/**/*.spec.ts"
+    ],
+    "watch": false,
+    "package": "./package.json",
+    "reporter": "spec",
+    "import": [
+        "tsx"
+    ],
+    "extension": [
+        "ts",
+        "tsx",
+        "js",
+        "coffee"
+    ],
+    "compile": "tsc -p tsconfig.json",
+    "recursive": true
+  }
