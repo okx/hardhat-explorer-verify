@@ -4,6 +4,7 @@ import semver from 'semver';
 import { subtask, types } from 'hardhat/config';
 import { NomicLabsHardhatPluginError } from 'hardhat/plugins';
 import { isFullyQualifiedName, parseFullyQualifiedName } from 'hardhat/utils/contract-names';
+import chalk from 'chalk';
 
 import { chainConfig } from '../config/ChainConfig';
 import { getEtherscanEndpoints } from '../network/prober';
@@ -297,8 +298,9 @@ subtask(TASK_VERIFY_VERIFY_MINIMUM_BUILD)
                 if (minimumBuildVerificationStatus.isVerificationSuccess()) {
                     const contractURL = buildContractUrl(etherscanAPIEndpoints.browserURL, address);
                     console.log(
-                        `Successfully verified contract ${contractInformation.contractName} on Etherscan.
-  ${contractURL}`,
+                        chalk.greenBright(
+                            `Successfully verified contract ${contractInformation.contractName} on Etherscan.\n${contractURL}`,
+                        ),
                     );
                     return true;
                 }
