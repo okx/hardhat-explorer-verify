@@ -14,8 +14,8 @@ import {
     Artifacts,
     Network,
 } from 'hardhat/types';
-import { resolveEtherscanApiKey } from 'resolveEtherscanApiKey';
 
+import { resolveEtherscanApiKey } from '../resolveEtherscanApiKey';
 import { retrieveContractBytecode } from '../network/prober';
 import { verifyAllowedChains } from '../config/config';
 import { encodeArguments } from '../abi/ABIEncoder';

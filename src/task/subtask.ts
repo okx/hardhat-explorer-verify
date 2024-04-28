@@ -2,10 +2,10 @@ import path from 'path';
 
 import semver from 'semver';
 import { subtask, types } from 'hardhat/config';
-import { chainConfig } from 'config/ChainConfig';
 import { NomicLabsHardhatPluginError } from 'hardhat/plugins';
 import { isFullyQualifiedName, parseFullyQualifiedName } from 'hardhat/utils/contract-names';
 
+import { chainConfig } from '../config/ChainConfig';
 import { getEtherscanEndpoints } from '../network/prober';
 import { extractMatchingContractInformation } from '../solc/bytecode';
 import { getLibraryLinks } from '../solc/libraries';

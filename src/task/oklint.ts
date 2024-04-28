@@ -3,11 +3,6 @@ import { task, types } from 'hardhat/config';
 import { TASK_VERIFY } from './constants';
 import { verify } from './lib';
 
-task(TASK_VERIFY, "Prints 'Hello, World!'").setAction(async () => {
-    console.log('execution!');
-    return Promise<void>
-});
-
 task(TASK_VERIFY, 'Verifies contract on Etherscan')
     .addOptionalPositionalParam('address', 'Address of the smart contract to verify')
     .addOptionalParam(
