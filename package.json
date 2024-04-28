@@ -32,12 +32,13 @@
     "cbor": "^8.1.0",
     "chalk": "^2.4.2",
     "debug": "^4.3.4",
+    "ethers": "^5.0.8",
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.21",
     "semver": "^6.3.0",
     "table": "^6.8.0",
-    "undici": "^5.14.0",
-    "ethers": "^5.0.8"
+    "tsx": "^4.7.3",
+    "undici": "^5.14.0"
   },
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.0",

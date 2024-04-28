@@ -4,13 +4,16 @@
         "chai"
     ],
     "spec": [
-        "tests/**/*.spec.ts",
-        "tests/**/*.coffee",
+        "test/**/*.spec.ts",
+        "test/**/*.spec.js",
         "src/**/*.spec.ts"
     ],
     "watch": false,
     "package": "./package.json",
     "reporter": "spec",
+    "import": [
+        "tsx"
+    ],
     "extension": [
         "ts",
         "tsx",
