@@ -1,5 +1,6 @@
 import { CompilationJob, CompilerInput, CompilerOutput } from 'hardhat/types';
-import { Bytecode } from 'solc/bytecode';
+
+import { Bytecode } from '../solc/bytecode';
 
 export type ChainConfig = Record<string, EtherscanChainConfig>;
 
