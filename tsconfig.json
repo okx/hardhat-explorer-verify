@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2021",
+    "target": "ESNext",
     "module": "CommonJS",
+    "moduleResolution": "node",
     "checkJs": true,
     "strict": true,
-    "rootDirs": [
-      "./src",
-      "./test"
-    ],
     "baseUrl": "./src",
+    "rootDir": "./src",
     "outDir": "./dist",
     "declaration": true,
     "declarationMap": true,
@@ -22,13 +20,13 @@
     "skipLibCheck": true
   },
   "include": [
-    "./src",
-    "./test"
+    "./src"
   ],
   "exclude": [
     "node_modules",
     "dist",
     "**/dist",
-    "**/*.spec.ts"
+    "**/*.spec.*",
+    "./test/**/*.ts"
   ]
 }

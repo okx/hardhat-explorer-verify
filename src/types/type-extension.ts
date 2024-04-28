@@ -1,13 +1,15 @@
-import { EtherscanConfig, EtherscanUserConfig } from './type';
+import { EtherscanConfig, EtherscanUserConfig, SourcifyConfig } from './type';
 
 import 'hardhat/types/config';
 
 declare module 'hardhat/types/config' {
     interface HardhatUserConfig {
-        etherscan?: EtherscanUserConfig;
+        etherscan?: Partial<EtherscanUserConfig>;
+        sourcify?: Partial<SourcifyConfig>;
     }
 
     interface HardhatConfig {
         etherscan: EtherscanConfig;
+        sourcify: SourcifyConfig;
     }
 }

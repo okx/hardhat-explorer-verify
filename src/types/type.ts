@@ -12,6 +12,7 @@ export interface CustomChain {
 export interface EtherscanUserConfig {
     apiKey?: string | Record<string, string>;
     customChains?: CustomChain[];
+    enabled?: boolean;
 }
 
 export interface EtherscanConfig {
@@ -22,6 +23,12 @@ export interface EtherscanConfig {
 export interface EtherscanURLs {
     apiURL: string;
     browserURL: string;
+}
+
+export interface SourcifyConfig {
+    enabled: boolean;
+    apiUrl?: string;
+    browserUrl?: string;
 }
 
 export interface EtherscanChainConfig {
