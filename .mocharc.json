@@ -11,9 +11,6 @@
     "watch": false,
     "package": "./package.json",
     "reporter": "spec",
-    "import": [
-        "tsx"
-    ],
     "extension": [
         "ts",
         "tsx",
@@ -22,4 +19,4 @@
     ],
     "compile": "tsc -p tsconfig.json",
     "recursive": true
-  }
+}
