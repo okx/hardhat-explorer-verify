@@ -14,6 +14,7 @@ import {
     Artifacts,
     Network,
 } from 'hardhat/types';
+import chalk from 'chalk';
 
 import { resolveEtherscanApiKey } from '../resolveEtherscanApiKey';
 import { retrieveContractBytecode } from '../network/prober';
@@ -236,6 +237,27 @@ export const verify: ActionType<VerificationArgs> = async (
             "You didn’t provide any address. Please re-run the 'verify' task with the address of the contract you want to verify.",
         );
     }
+
+    let serviceUsed = 'Etherscan';
+
+    if (config.oklint && config.oklint.apiKey) {
+        config.etherscan = {
+            ...config.etherscan,
+            ...config.oklint,
+        };
+        serviceUsed = 'Oklink';
+    }
+
+    console.log(
+        chalk.green(`Using ${chalk.bold.bgBlueBright(serviceUsed)} for contract verification.`),
+    );
+    console.log(
+        chalk.bold(
+            chalk.green(
+                'Plugin documentation can be found at: https://hardhat.org/plugins/nomiclabs-hardhat-etherscan',
+            ),
+        ),
+    );
 
     verifyAllowedChains(config.etherscan);
 
