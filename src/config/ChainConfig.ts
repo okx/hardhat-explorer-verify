@@ -1,7 +1,15 @@
 import { ChainConfig } from '../types/type';
 
 // See https://github.com/ethereum/EIPs/blob/master/EIPS/eip-155.md#list-of-chain-ids
+// https://github.com/NomicFoundation/hardhat/blob/main/packages/hardhat-verify/README.md#adding-support-for-other-networks
 export const chainConfig: ChainConfig = {
+    xlayer: {
+        chainId: 196,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER',
+            browserURL: 'https://www.oklink.com/xlayer'
+        }
+    },
     mainnet: {
         chainId: 1,
         urls: {
@@ -226,7 +234,4 @@ export const chainConfig: ChainConfig = {
             browserURL: 'https://explorer.pops.one',
         },
     },
-    // We are not adding new networks to the core of hardhat-etherscan anymore.
-    // Please read this to learn how to manually add support for custom networks:
-    // https://github.com/NomicFoundation/hardhat/tree/main/packages/hardhat-etherscan#adding-support-for-other-networks
 };
