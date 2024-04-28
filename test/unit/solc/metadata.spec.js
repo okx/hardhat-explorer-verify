@@ -100,7 +100,7 @@ describe('solc version inferral tests', () => {
          * These tests require compiling a contract with solc v0.4.6 or earlier.
          * This is not currently possible with hardhat out of the box.
          */
-        it.skip('bytecode emitted by solc v0.4.6; the last version to feature no metadata', () => {});
+        it.skip('bytecode emitted by solc v0.4.6; the last version to feature no metadata', () => { });
 
         // We can test with gibberish instead
         it('when payload is gibberish', async () => {
@@ -132,7 +132,7 @@ describe('solc version inferral tests', () => {
     });
 
     describe('old compiler inferral; these embed metadata without solc version', () => {
-        it.skip('bytecode emitted by solc v0.4.7; the first version to feature metadata', () => {});
+        it.skip('bytecode emitted by solc v0.4.7; the first version to feature metadata', () => { });
 
         // The minimum solc version that can be run with hardhat out of the box.
         it('bytecode emitted by solc v0.4.12', async () => {

@@ -1,4 +1,4 @@
-import util from 'util';
+import util from 'node:util';
 
 import debug from 'debug';
 import { decodeFirstSync } from 'cbor';
