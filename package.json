@@ -1,5 +1,5 @@
 {
-  "name": "@okx/hardhat-oklint",
+  "name": "@okxweb3/hardhat-oklink-verify",
   "version": "1.0.0",
   "description": "Hardhat plugin for verifying contracts on OKExChain",
   "main": "dist/index.js",
