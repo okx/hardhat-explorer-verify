@@ -1,0 +1,19 @@
+name: Auto Fill PR Template
+
+on:
+  pull_request:
+    types: [opened, edited]
+
+jobs:
+  fill-pr-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Fill PR Template
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: "Auto-filled PR Template"
+          pr_template: ".github/pull_request_template.md"
