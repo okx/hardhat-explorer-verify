@@ -48,7 +48,7 @@ npm install @okxweb3/hardhat-explorer-verify
      etherscan: {
         apiKey: '...'
      },
-     oklint: {
+     okxweb3explorer: {
        apiKey: "<您的API密钥>",
      }
    };
@@ -61,7 +61,7 @@ npm install @okxweb3/hardhat-explorer-verify
    示例命令如下：
 
    ```bash
-   npx hardhat verify --network xlayer <您的合约地址>
+   npx hardhat okverify --network xlayer <您的合约地址>
    ```
 
 4. **查看验证结果**: 验证成功后，您可以在OKX Chain区块链浏览器中查看验证状态和合约代码。

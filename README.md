@@ -48,7 +48,7 @@ npm install @okxweb3/hardhat-explorer-verify
      etherscan: {
         apiKey: '...'
      },
-     oklint: {
+     okxweb3explorer: {
        apiKey: "<Your API Key>",
      }
    };
@@ -61,7 +61,7 @@ npm install @okxweb3/hardhat-explorer-verify
    Example command:
 
    ```bash
-   npx hardhat verify --network xlayer <Your Contract Address>
+   npx hardhat okverify --network xlayer <Your Contract Address>
    ```
 
 4. **View Verification Results**: Once verification is successful, you can view the verification status and the contract code on the OKX Chain blockchain explorer.
