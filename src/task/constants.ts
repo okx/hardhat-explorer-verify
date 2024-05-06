@@ -1,4 +1,4 @@
-export const pluginName = '@okx/hardhat-oklint';
+export const pluginName = '@okxweb3/hardhat-explorer-verify';
 export const TASK_VERIFY = 'okverify';
 export const TASK_VERIFY_GET_MINIMUM_BUILD = 'okverify:get-minimum-build';
 export const TASK_VERIFY_GET_CONSTRUCTOR_ARGUMENTS = 'okverify:get-constructor-arguments';

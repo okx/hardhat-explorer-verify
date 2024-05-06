@@ -1,3 +1,3 @@
 import './types/type-extension'
-import './task/oklint';
+import './task/okxweb3explorer';
 import './task/subtask';

@@ -240,10 +240,10 @@ export const verify: ActionType<VerificationArgs> = async (
 
     let serviceUsed = 'Etherscan';
 
-    if (config.oklint && config.oklint.apiKey) {
+    if (config.okxweb3explorer && config.okxweb3explorer.apiKey) {
         config.etherscan = {
             ...config.etherscan,
-            ...config.oklint,
+            ...config.okxweb3explorer,
         };
         serviceUsed = 'Oklink';
     }
