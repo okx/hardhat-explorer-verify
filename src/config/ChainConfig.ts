@@ -10,6 +10,21 @@ export const chainConfig: ChainConfig = {
             browserURL: 'https://www.oklink.com/xlayer'
         }
     },
+    xlayertest: {
+        chainId: 195,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER_TESTNET',
+            browserURL: 'https://www.oklink.com/zh-hans/xlayer-test'
+        }
+    },
+    sepolia: {
+        chainId: 11155111,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/SEPOLIA_TESTNET',
+            browserURL: 'https://www.oklink.com/zh-hans/sepolia-test',
+        },
+    },
+
     mainnet: {
         chainId: 1,
         urls: {
@@ -43,13 +58,6 @@ export const chainConfig: ChainConfig = {
         urls: {
             apiURL: 'https://api-kovan.etherscan.io/api',
             browserURL: 'https://kovan.etherscan.io',
-        },
-    },
-    sepolia: {
-        chainId: 11155111,
-        urls: {
-            apiURL: 'https://api-sepolia.etherscan.io/api',
-            browserURL: 'https://sepolia.etherscan.io',
         },
     },
     bsc: {
