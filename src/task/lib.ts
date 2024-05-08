@@ -245,12 +245,14 @@ export const verify: ActionType<VerificationArgs> = async (
             ...config.etherscan,
             ...config.okxweb3explorer,
         };
-        serviceUsed = 'Oklink';
+        serviceUsed = 'Okxweb3explorer';
     }
 
     console.log(
-        chalk.green(`Using ${chalk.bold.bgBlueBright(serviceUsed)} for contract verification.`),
+        chalk.green(`Using ${serviceUsed === 'Etherscan' ? chalk.bold.bgRed(serviceUsed) : chalk.bold.bgBlue(serviceUsed)} for contract verification.`),
     );
+
+    // TODO: change to our plugin doc.
     console.log(
         chalk.bold(
             chalk.green(
