@@ -2,6 +2,7 @@ import { task, types } from 'hardhat/config';
 
 import { TASK_VERIFY } from './constants';
 import { verify } from './lib';
+import './subtask';
 
 task(TASK_VERIFY, 'Verifies contract on Etherscan')
     .addOptionalPositionalParam('address', 'Address of the smart contract to verify')
@@ -30,6 +31,7 @@ task(TASK_VERIFY, 'Verifies contract on Etherscan')
         'Contract constructor arguments. Ignored if the --constructor-args option is used.',
         [],
     )
+    .addFlag('proxy', "Verify Proxy Contract or not")
     .addFlag('listNetworks', 'Print the list of supported networks')
     .addFlag('noCompile', "Don't compile before running this task")
     .setAction(verify);

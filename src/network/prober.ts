@@ -37,7 +37,7 @@ export async function getEtherscanEndpoints(
 
     const chainConfigEntry = chainConfig[network];
 
-    return { network, urls: chainConfigEntry.urls };
+    return { network, urls: chainConfigEntry.urls, chainId: chainID, };
 }
 
 export async function retrieveContractBytecode(

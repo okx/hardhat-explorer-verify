@@ -17,6 +17,7 @@ import {
     VerifyMinimumBuildArgs,
 } from '../types/type';
 import { buildContractUrl } from '../util';
+import { verify as proxyVerify } from '../proxy/verify-proxy'
 
 import {
     TASK_VERIFY_GET_COMPILER_VERSIONS,
@@ -25,6 +26,7 @@ import {
     TASK_VERIFY_GET_ETHERSCAN_ENDPOINT,
     TASK_VERIFY_GET_LIBRARIES,
     TASK_VERIFY_GET_MINIMUM_BUILD,
+    TASK_VERIFY_PROXY,
     TASK_VERIFY_VERIFY,
     TASK_VERIFY_VERIFY_MINIMUM_BUILD,
     pluginName,
@@ -335,3 +337,6 @@ subtask(TASK_VERIFY_VERIFY)
     .addOptionalParam('libraries', undefined, {}, types.any)
     .addFlag('noCompile', undefined)
     .setAction(verifySubtask);
+
+subtask(TASK_VERIFY_PROXY)
+    .setAction(proxyVerify);

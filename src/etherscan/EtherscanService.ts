@@ -136,6 +136,14 @@ export class EtherscanResponse {
         return this.message === 'Pending in queue';
     }
 
+    public isFailure() {
+        return this.message === "Fail - Unable to verify";
+    }
+
+    public isSuccess() {
+        return this.message === "Pass - Verified";
+    }
+
     public isVerificationFailure() {
         return this.message === 'Fail - Unable to verify';
     }
