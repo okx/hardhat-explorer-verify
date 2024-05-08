@@ -22,7 +22,7 @@
     "pub:beta": "npm version prerelease --preid=beta",
     "pub:patch": "npm version patch",
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && npm run test && tsc",
     "prepublish": "npm run build",
     "lint": "eslint --config .eslintrc . --cache --debug",
     "lint:fix": "eslint --fix .",
