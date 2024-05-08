@@ -67,4 +67,14 @@ npm install @okxweb3/hardhat-explorer-verify
 4. **查看验证结果**: 验证成功后，您可以在OKX Chain区块链浏览器中查看验证状态和合约代码。
 ![deploy](./public/deploy.png)
 
+
+5. **验证代理合约**
+
+示例命令如下：
+```bash
+npx hardhat okverify --network xlayer --contract <Contract>:<Name> --proxy <address>
+```
+
+- `--proxy`: 提示地址是代理地址
+
 这个文档旨在帮助开发者更有效地使用`@okxweb3/hardhat-explorer-verify`插件。如有疑问或需要进一步帮助，欢迎提交问题到项目的GitHub仓库。

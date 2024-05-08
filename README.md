@@ -58,14 +58,23 @@ npm install @okxweb3/hardhat-explorer-verify
 
 3. **Verify Contracts**: After deploying the contracts, use Hardhat to run the verification script. This typically involves running a specific Hardhat task that automatically fetches contract data and submits it to the OKX Chain explorer for verification.
 
-   Example command:
+Example command:
 
-   ```bash
-   npx hardhat okverify --network xlayer <Your Contract Address>
-   ```
+```bash
+npx hardhat okverify --network xlayer <Your Contract Address>
+```
 
 4. **View Verification Results**: Once verification is successful, you can view the verification status and the contract code on the OKX Chain blockchain explorer.
 
 ![deploy](./public/deploy.png)
+
+5. **Verify TransparentUpgradeableProxy Contract**
+
+Example command:
+```bash
+npx hardhat okverify --network xlayer --contract <Contract>:<Name> --proxy <address>
+```
+
+- `--proxy`: mention it's a proxy contract address.
 
 This document is designed to help developers effectively use the `@okxweb3/hardhat-explorer-verify` plugin. If you have questions or need further assistance, feel free to submit issues to the project's GitHub repository.
