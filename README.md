@@ -77,4 +77,7 @@ npx hardhat okverify --network xlayer --contract <Contract>:<Name> --proxy <addr
 
 - `--proxy`: mention it's a proxy contract address.
 
+**Note:**
+- If using **897 Contract**, don't add `--proxy`. Directly use `npx hardhat okverify --network xlayer --contract <Contract>:<Name>`
+
 This document is designed to help developers effectively use the `@okxweb3/hardhat-explorer-verify` plugin. If you have questions or need further assistance, feel free to submit issues to the project's GitHub repository.

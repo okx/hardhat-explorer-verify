@@ -77,4 +77,7 @@ npx hardhat okverify --network xlayer --contract <Contract>:<Name> --proxy <addr
 
 - `--proxy`: 提示地址是代理地址
 
+**注意:**
+- 如果使用的是 **897 合约**, 则不需要添加 `--proxy`. 直接使用 `npx hardhat okverify --network xlayer --contract <Contract>:<Name>` 即可。
+
 这个文档旨在帮助开发者更有效地使用`@okxweb3/hardhat-explorer-verify`插件。如有疑问或需要进一步帮助，欢迎提交问题到项目的GitHub仓库。
