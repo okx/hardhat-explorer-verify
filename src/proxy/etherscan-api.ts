@@ -1,6 +1,7 @@
 import { UpgradesError } from '@openzeppelin/upgrades-core';
 import { HardhatRuntimeEnvironment } from 'hardhat/types';
 import { request } from 'undici';
+import chalk from 'chalk';
 
 import { Etherscan } from '../etherscan/etherscan';
 
@@ -38,7 +39,22 @@ export async function callEtherscanApi(etherscan: Etherscan, params: any): Promi
  * Throws an error if Etherscan API key is not present in config.
  */
 export async function getEtherscanInstance(hre: HardhatRuntimeEnvironment): Promise<Etherscan> {
-    const etherscanConfig: EtherscanConfig | undefined = (hre.config as any).etherscan; // This should never be undefined, but check just in case
+    let etherscanConfig = (hre.config as any).etherscan;
+    let serviceUsed = 'Etherscan';
+    const okxweb3explorer = hre.config.okxweb3explorer;
+
+    if (okxweb3explorer && okxweb3explorer.apiKey) {
+        etherscanConfig = {
+            ...hre.config.etherscan,
+            ...okxweb3explorer
+        }
+        serviceUsed = 'Okxweb3explorer';
+    }
+
+    console.log(
+        chalk.green(`Using ${serviceUsed === 'Etherscan' ? chalk.bold.bgRed(serviceUsed) : chalk.bold.bgBlue(serviceUsed)} for contract verification.`),
+    );
+
     const chainConfig = await Etherscan.getCurrentChainConfig(
         hre.network.name,
         hre.network.provider,
@@ -46,14 +62,6 @@ export async function getEtherscanInstance(hre: HardhatRuntimeEnvironment): Prom
     );
 
     return Etherscan.fromChainConfig(etherscanConfig?.apiKey, chainConfig);
-}
-
-/**
- * Etherscan configuration for hardhat-verify.
- */
-interface EtherscanConfig {
-    apiKey: string | Record<string, string>;
-    customChains: any[];
 }
 
 /**

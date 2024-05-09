@@ -8,6 +8,7 @@ export const resolveEtherscanApiKey = (
     network: string,
 ): string => {
     if (apiKey === undefined || apiKey === '') {
+        console.info('apiKey not correct.');
         throwMissingApiKeyError(network);
     }
 
@@ -15,6 +16,7 @@ export const resolveEtherscanApiKey = (
         return apiKey;
     }
 
+    console.info('apiKey is object');
     const key = (apiKey as any)[network];
 
     if (key === undefined || key === '') {

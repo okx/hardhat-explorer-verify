@@ -295,10 +295,13 @@ export const verifySubtask: ActionType<VerificationSubtaskArgs> = async (
     { address, constructorArguments, contract: contractFQN, libraries, noCompile },
     { config, network, run },
 ) => {
-    const { etherscan, okxweb3explorer } = config;
+    let { etherscan } = config;
     let serviceUsed = 'Etherscan';
+
+    const { okxweb3explorer } = config;
+
     if (okxweb3explorer && okxweb3explorer.apiKey) {
-        config.etherscan = {
+        etherscan = {
             ...config.etherscan,
             ...okxweb3explorer,
         };
