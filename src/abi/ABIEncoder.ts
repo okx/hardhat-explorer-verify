@@ -19,6 +19,12 @@ export async function encodeArguments(
     const contractInterface = new Interface(abi);
     let deployArgumentsEncoded;
     try {
+        // TODO: need to check
+        const constructorArgType = contractInterface.deploy.inputs?.map(ci => ci?.type);
+        constructorArguments?.forEach((item, index) => {
+            if (typeof item !== constructorArgType[index] && constructorArgType[index] === 'string') throw new NomicLabsHardhatPluginError(pluginName, `Invalid type for argument ${item}`);
+        })
+
         deployArgumentsEncoded = contractInterface
             .encodeDeploy(constructorArguments)
             .replace('0x', '');
