@@ -170,7 +170,7 @@ class EventsNotFound extends EventOrFunctionNotFound {
                 ', ',
             )}`,
             () =>
-                'If the proxy was recently deployed, the transaction may not be available on Etherscan yet. Try running the verify task again after waiting a few blocks.',
+                'If the proxy was recently deployed, the transaction may not be available yet. Try running the verify task again after waiting a few blocks.',
         );
     }
 }
@@ -188,7 +188,7 @@ class BytecodeNotMatchArtifact extends Error {
 
 /**
  * Fully verifies all contracts related to the given transparent or UUPS proxy address: implementation, admin (if any), and proxy.
- * Also links the proxy to the implementation ABI on Etherscan.
+ * Also links the proxy to the implementation ABI .
  *
  * This function will determine whether the address is a transparent or UUPS proxy based on whether its creation bytecode matches with
  * TransparentUpgradeableProxy or ERC1967Proxy.
@@ -297,7 +297,7 @@ async function fullVerifyTransparentOrUUPS(
 
 /**
  * Fully verifies all contracts related to the given beacon proxy address: implementation, beacon, and beacon proxy.
- * Also links the proxy to the implementation ABI on Etherscan.
+ * Also links the proxy to the implementation ABI.
  *
  * @param hre
  * @param proxyAddress The beacon proxy address

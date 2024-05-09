@@ -44,7 +44,7 @@ export class Etherscan {
     }
 
     /**
-     * Check if a smart contract is verified on Etherscan.
+     * Check if a smart contract is verified
      * @link https://docs.etherscan.io/api-endpoints/contracts#get-contract-source-code-for-verified-contract-source-codes
      * @param address - The address of the smart contract.
      * @returns True if the contract is verified, false otherwise.
@@ -59,7 +59,7 @@ export class Etherscan {
     }
 
     /**
-     * Verify a smart contract on Etherscan.
+     * Verify a smart contract
      * @link https://docs.etherscan.io/api-endpoints/contracts#verify-source-code
      * @param contractAddress - The address of the smart contract to verify.
      * @param sourceCode - The source code of the smart contract.
@@ -114,7 +114,7 @@ export class Etherscan {
     /**
      * Get the Etherscan URL for viewing a contract's details.
      * @param address - The address of the smart contract.
-     * @returns The URL to view the contract on Etherscan's website.
+     * @returns The URL to view the contract website.
      */
     public getContractUrl(address: string) {
         return `${this.browserUrl}/address/${address}#code`;

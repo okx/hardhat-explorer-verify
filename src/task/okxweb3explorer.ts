@@ -4,7 +4,7 @@ import { TASK_VERIFY } from './constants';
 import { verify } from './lib';
 import './subtask';
 
-task(TASK_VERIFY, 'Verifies contract on Etherscan')
+task(TASK_VERIFY, 'Verifies contract')
     .addOptionalPositionalParam('address', 'Address of the smart contract to verify')
     .addOptionalParam(
         'constructorArgs',

@@ -301,7 +301,7 @@ subtask(TASK_VERIFY_VERIFY_MINIMUM_BUILD)
                     const contractURL = buildContractUrl(etherscanAPIEndpoints.browserURL, address);
                     console.log(
                         chalk.greenBright(
-                            `Successfully verified contract ${contractInformation.contractName} on Etherscan.\n${contractURL}`,
+                            `Successfully verified contract ${contractInformation.contractName}.\n${contractURL}`,
                         ),
                     );
                     return true;
@@ -310,14 +310,14 @@ subtask(TASK_VERIFY_VERIFY_MINIMUM_BUILD)
                 console.log(
                     `We tried verifying your contract ${contractInformation.contractName} without including any unrelated one, but it failed.
   Trying again with the full solc input used to compile and deploy it.
-  This means that unrelated contracts may be displayed on Etherscan...
+  This means that unrelated contracts may be displayed...
   `,
                 );
             } else {
                 console.log(
                     `Compiling your contract excluding unrelated contracts did not produce identical bytecode.
   Trying again with the full solc input used to compile and deploy it.
-  This means that unrelated contracts may be displayed on Etherscan...
+  This means that unrelated contracts may be displayed...
   `,
                 );
             }

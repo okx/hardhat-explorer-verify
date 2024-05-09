@@ -463,7 +463,7 @@ export const verifySubtask: ActionType<VerificationSubtaskArgs> = async (
         const contractURL = buildContractUrl(etherscanAPIEndpoints.browserURL, address);
 
         console.log(
-            `Successfully verified full build of contract ${contractInformation.contractName} on Etherscan.
+            `Successfully verified full build of contract ${contractInformation.contractName}.
   ${contractURL}`,
         );
         return;
