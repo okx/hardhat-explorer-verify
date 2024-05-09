@@ -1,6 +1,6 @@
 {
   "name": "@okxweb3/hardhat-explorer-verify",
-  "version": "1.6.2",
+  "version": "1.6.3-beta.0",
   "description": "Hardhat plugin for verifying contracts on OKExChain",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
