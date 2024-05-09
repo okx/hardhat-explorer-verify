@@ -50,7 +50,7 @@ describe('Plugin integration tests', function () {
             await this.env.run(TASK_COMPILE, { force: true, quiet: true });
         });
 
-        it('Should verify deployed inner contract on etherscan', async function () {
+        it('Should verify deployed inner contract', async function () {
             const deployedAddress = await deployContract('InnerContract', [], this.env);
 
             return this.env.run('verify', {
@@ -58,7 +58,7 @@ describe('Plugin integration tests', function () {
             });
         });
 
-        it('Should verify deployed contract with name clash on etherscan', async function () {
+        it('Should verify deployed contract with name clash', async function () {
             const deployedAddress = await deployContract('TestReentrancyGuardLocal', [], this.env);
 
             return this.env.run('verify', {
@@ -66,7 +66,7 @@ describe('Plugin integration tests', function () {
             });
         });
 
-        it('Should verify deployed library on etherscan', async function () {
+        it('Should verify deployed library', async function () {
             const deployedAddress = await deployContract('TestLibrary', [], this.env);
 
             return this.env.run('verify', {
@@ -74,7 +74,7 @@ describe('Plugin integration tests', function () {
             });
         });
 
-        it('Should verify deployed contract with a complex parameter list on etherscan', async function () {
+        it('Should verify deployed contract with a complex parameter list', async function () {
             const modulePath = path.join(process.cwd(), 'paramList.js');
             const args = require(modulePath);
             const deployedAddress = await deployContract('TestParamList', args, this.env);

@@ -17,7 +17,9 @@ export async function getEtherscanEndpoints(
 
     const chainID = parseInt(await provider.send('eth_chainId'), 16);
 
-    const networkInCustomChains = [...customChains]
+    const safeCustomChains = Array.isArray(customChains) ? customChains : [];
+
+    const networkInCustomChains = [...safeCustomChains]
         .reverse() // the last entry wins
         .find(customChain => customChain.chainId === chainID);
 
@@ -35,7 +37,7 @@ export async function getEtherscanEndpoints(
 
     const chainConfigEntry = chainConfig[network];
 
-    return { network, urls: chainConfigEntry.urls };
+    return { network, urls: chainConfigEntry.urls, chainId: chainID, };
 }
 
 export async function retrieveContractBytecode(

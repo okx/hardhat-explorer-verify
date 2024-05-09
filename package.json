@@ -1,6 +1,6 @@
 {
   "name": "@okxweb3/hardhat-explorer-verify",
-  "version": "1.5.0",
+  "version": "1.6.2",
   "description": "Hardhat plugin for verifying contracts on OKExChain",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,9 +31,11 @@
   "dependencies": {
     "@ethersproject/abi": "^5.1.2",
     "@ethersproject/address": "^5.0.2",
+    "@openzeppelin/upgrades-core": "^1.33.1",
     "cbor": "^8.1.0",
     "chalk": "^2.4.2",
     "debug": "^4.3.4",
+    "ethereumjs-util": "^7.1.5",
     "ethers": "^5.0.8",
     "fs-extra": "^7.0.1",
     "lodash": "^4.17.21",

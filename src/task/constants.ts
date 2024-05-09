@@ -8,3 +8,4 @@ export const TASK_VERIFY_GET_CONTRACT_INFORMATION = 'okverify:get-contract-infor
 export const TASK_VERIFY_VERIFY_MINIMUM_BUILD = 'okverify:verify-minimum-build';
 export const TASK_VERIFY_VERIFY = 'okverify:verify';
 export const TASK_VERIFY_GET_LIBRARIES = 'okverify:get-libraries';
+export const TASK_VERIFY_PROXY = 'okverify:proxy';

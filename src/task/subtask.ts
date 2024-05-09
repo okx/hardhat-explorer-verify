@@ -17,6 +17,7 @@ import {
     VerifyMinimumBuildArgs,
 } from '../types/type';
 import { buildContractUrl } from '../util';
+import { verify as proxyVerify } from '../proxy/verify-proxy'
 
 import {
     TASK_VERIFY_GET_COMPILER_VERSIONS,
@@ -25,6 +26,7 @@ import {
     TASK_VERIFY_GET_ETHERSCAN_ENDPOINT,
     TASK_VERIFY_GET_LIBRARIES,
     TASK_VERIFY_GET_MINIMUM_BUILD,
+    TASK_VERIFY_PROXY,
     TASK_VERIFY_VERIFY,
     TASK_VERIFY_VERIFY_MINIMUM_BUILD,
     pluginName,
@@ -299,7 +301,7 @@ subtask(TASK_VERIFY_VERIFY_MINIMUM_BUILD)
                     const contractURL = buildContractUrl(etherscanAPIEndpoints.browserURL, address);
                     console.log(
                         chalk.greenBright(
-                            `Successfully verified contract ${contractInformation.contractName} on Etherscan.\n${contractURL}`,
+                            `Successfully verified contract ${contractInformation.contractName}.\n${contractURL}`,
                         ),
                     );
                     return true;
@@ -308,14 +310,14 @@ subtask(TASK_VERIFY_VERIFY_MINIMUM_BUILD)
                 console.log(
                     `We tried verifying your contract ${contractInformation.contractName} without including any unrelated one, but it failed.
   Trying again with the full solc input used to compile and deploy it.
-  This means that unrelated contracts may be displayed on Etherscan...
+  This means that unrelated contracts may be displayed...
   `,
                 );
             } else {
                 console.log(
                     `Compiling your contract excluding unrelated contracts did not produce identical bytecode.
   Trying again with the full solc input used to compile and deploy it.
-  This means that unrelated contracts may be displayed on Etherscan...
+  This means that unrelated contracts may be displayed...
   `,
                 );
             }
@@ -335,3 +337,6 @@ subtask(TASK_VERIFY_VERIFY)
     .addOptionalParam('libraries', undefined, {}, types.any)
     .addFlag('noCompile', undefined)
     .setAction(verifySubtask);
+
+subtask(TASK_VERIFY_PROXY)
+    .setAction(proxyVerify);

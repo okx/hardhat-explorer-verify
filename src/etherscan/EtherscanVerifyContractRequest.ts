@@ -17,8 +17,9 @@ export interface EtherscanVerifyRequest extends EtherscanRequest {
 }
 
 export interface EtherscanCheckStatusRequest extends EtherscanRequest {
-    action: "checkverifystatus";
-    guid: string;
+    action: "checkverifystatus" | "getsourcecode";
+    guid?: string;
+    address?: string;
 }
 
 export function toVerifyRequest(params: {

@@ -5,6 +5,7 @@ import {
     TASK_COMPILE_SOLIDITY_GET_COMPILATION_JOB_FOR_FILE,
     TASK_COMPILE_SOLIDITY_GET_DEPENDENCY_GRAPH,
 } from 'hardhat/builtin-tasks/task-names';
+import chalk from 'chalk';
 import { NomicLabsHardhatPluginError } from 'hardhat/plugins';
 import {
     CompilerInput,
@@ -14,7 +15,6 @@ import {
     Artifacts,
     Network,
 } from 'hardhat/types';
-import chalk from 'chalk';
 
 import { resolveEtherscanApiKey } from '../resolveEtherscanApiKey';
 import { retrieveContractBytecode } from '../network/prober';
@@ -56,6 +56,7 @@ import {
     TASK_VERIFY_GET_CONTRACT_INFORMATION,
     TASK_VERIFY_GET_MINIMUM_BUILD,
     TASK_VERIFY_VERIFY_MINIMUM_BUILD,
+    TASK_VERIFY_PROXY,
 } from './constants';
 
 export function assertHardhatPluginInvariant(
@@ -215,7 +216,10 @@ export async function inferContract(
 }
 
 export const verify: ActionType<VerificationArgs> = async (
-    {
+    args,
+    env,
+) => {
+    const {
         address,
         constructorArgsParams,
         constructorArgs: constructorArgsModule,
@@ -223,9 +227,15 @@ export const verify: ActionType<VerificationArgs> = async (
         libraries: librariesModule,
         listNetworks,
         noCompile,
-    },
-    { config, run },
-) => {
+        proxy
+    } = args;
+    const { config, run } = env;
+
+    if (proxy) {
+        await run(TASK_VERIFY_PROXY, args);
+        return;
+    }
+
     if (listNetworks) {
         await printSupportedNetworks(config.etherscan.customChains);
         return;
@@ -285,7 +295,23 @@ export const verifySubtask: ActionType<VerificationSubtaskArgs> = async (
     { address, constructorArguments, contract: contractFQN, libraries, noCompile },
     { config, network, run },
 ) => {
-    const { etherscan } = config;
+    let { etherscan } = config;
+    let serviceUsed = 'Etherscan';
+
+    const { okxweb3explorer } = config;
+
+    if (okxweb3explorer && okxweb3explorer.apiKey) {
+        etherscan = {
+            ...config.etherscan,
+            ...okxweb3explorer,
+        };
+
+        serviceUsed = 'Okxweb3explorer';
+    }
+
+    console.log(
+        chalk.green(`Using ${serviceUsed === 'Etherscan' ? chalk.bold.bgRed(serviceUsed) : chalk.bold.bgBlue(serviceUsed)} for contract verification.`),
+    );
 
     const { isAddress } = await import('@ethersproject/address');
     if (!isAddress(address)) {
@@ -320,7 +346,9 @@ export const verifySubtask: ActionType<VerificationSubtaskArgs> = async (
     );
 
     if (alreadyVerified) {
-        console.log(`The contract ${address} has already been verified`);
+        console.log(
+            chalk.green(`The contract ${address} has already been verified`),
+        )
         return;
     }
 
@@ -438,7 +466,7 @@ export const verifySubtask: ActionType<VerificationSubtaskArgs> = async (
         const contractURL = buildContractUrl(etherscanAPIEndpoints.browserURL, address);
 
         console.log(
-            `Successfully verified full build of contract ${contractInformation.contractName} on Etherscan.
+            `Successfully verified full build of contract ${contractInformation.contractName}.
   ${contractURL}`,
         );
         return;
