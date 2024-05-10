@@ -5,7 +5,7 @@
 
 ## 插件的背景
 
-`@okxweb3/hardhat-explorer-verify` 是一个为Hardhat框架设计的插件，用于验证部署在OKX Chain XLayer上的智能合约。该插件专注于合约代码的验证，确保部署后的合约代码与源代码完全匹配，从而增强智能合约的透明度和信任度。用户可以通过此插件在OKX Chain区块链浏览器上验证他们的合约，而无需手动提交验证。
+`@okxweb3/hardhat-explorer-verify` 是一个为Hardhat框架设计的插件，用于验证部署在包含OKX Chain XLayer在内的所有 EVM 链上的智能合约。该插件专注于合约代码的验证，确保部署后的合约代码与源代码完全匹配，从而增强智能合约的透明度和信任度。用户可以通过此插件在OKX Chain区块链浏览器上验证他们的合约，而无需手动提交验证。
 
 ## Features
 
