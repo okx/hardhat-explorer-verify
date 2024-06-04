@@ -77,6 +77,59 @@ npx hardhat okverify --network xlayer --contract <Contract>:<Name> --proxy <addr
 
 - `--proxy`: 提示地址是代理地址
 
+6. **同时批量验证合约**
+
+如果要同时批量验证多个合约文件，则需要写验证脚本，并在其中添加部署的合约地址和构造参数。例子如下：
+
+```ts
+// scripts/batchVerify.js
+async function main() {
+  const contractsToVerify = [
+    {
+      name: "ContractA",
+      address: "0x1234567890abcdef1234567890abcdef12345678", // replace to real address
+      args: [42], // replace to real constructor
+    },
+    {
+      name: "ContractB",
+      address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+      args: ["Hello, Hardhat!"],
+    },
+    {
+      name: "ContractC",
+      address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+      args: ["0xAbcdefabcdefabcdefabcdefabcdefabcdefAbc"],
+    },
+    // More
+    ...
+  ];
+
+  for (const contract of contractsToVerify) {
+    try {
+      await hre.run("verify:verify", {
+        address: contract.address,
+        constructorArguments: contract.args,
+      });
+      console.log(`${contract.name} verified at ${contract.address}`);
+    } catch (error) {
+      console.error(`Failed to verify ${contract.name} at ${contract.address}:`, error);
+    }
+  }
+}
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+运行验证脚本:
+
+```bash
+npx hardhat run --network <network-name> scripts/batchVerify.js
+```
+
 **注意:**
 - 如果使用的是 **897 合约**, 则不需要添加 `--proxy`. 直接使用 `npx hardhat okverify --network xlayer --contract <Contract>:<Name>` 即可。
 

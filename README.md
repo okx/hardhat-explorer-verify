@@ -77,6 +77,59 @@ npx hardhat okverify --network xlayer --contract <Contract>:<Name> --proxy <addr
 
 - `--proxy`: mention it's a proxy contract address.
 
+6. **Veirify Multiple Contracts Simultaneously**
+
+To simutaneously verify multiple contracts, you will need to creata a verification script where you include the deployed contract address and their constructor parameters. See the example below for reference:
+
+```ts
+// scripts/batchVerify.js
+async function main() {
+  const contractsToVerify = [
+    {
+      name: "ContractA",
+      address: "0x1234567890abcdef1234567890abcdef12345678", // replace to real address
+      args: [42], // replace to real constructor
+    },
+    {
+      name: "ContractB",
+      address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+      args: ["Hello, Hardhat!"],
+    },
+    {
+      name: "ContractC",
+      address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd",
+      args: ["0xAbcdefabcdefabcdefabcdefabcdefabcdefAbc"],
+    },
+    // More
+    ...
+  ];
+
+  for (const contract of contractsToVerify) {
+    try {
+      await hre.run("verify:verify", {
+        address: contract.address,
+        constructorArguments: contract.args,
+      });
+      console.log(`${contract.name} verified at ${contract.address}`);
+    } catch (error) {
+      console.error(`Failed to verify ${contract.name} at ${contract.address}:`, error);
+    }
+  }
+}
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+Then run the verification script:
+
+```bash
+npx hardhat run --network <network-name> scripts/batchVerify.js
+```
+
 **Note:**
 - If using **897 Contract**, don't add `--proxy`. Directly use `npx hardhat okverify --network xlayer --contract <Contract>:<Name>`
 
