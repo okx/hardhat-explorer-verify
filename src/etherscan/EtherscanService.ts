@@ -47,7 +47,8 @@ The HTTP server response is not ok. Status code: ${response.statusCode} Response
         );
     }
 
-    const etherscanResponse = new EtherscanResponse(await response.body.json());
+    const data = await response.body.json();
+    const etherscanResponse = new EtherscanResponse(data);
 
     if (etherscanResponse.isBytecodeMissingInNetworkError()) {
         throw new NomicLabsHardhatPluginError(
@@ -98,7 +99,8 @@ Reason: ${error.message}`,
         );
     }
 
-    const etherscanResponse = new EtherscanResponse(await response.body.json());
+    const data = await response.body.json();
+    const etherscanResponse = new EtherscanResponse(data);
 
     if (etherscanResponse.isPending()) {
         await delay(verificationIntervalMs);
@@ -177,6 +179,18 @@ export async function isAlreadyVerified(
     url.search = parameters.toString();
 
     const response = await sendGetRequest(url);
+
+    if (!(response.statusCode >= 200 && response.statusCode <= 299)) {
+        // This could be always interpreted as JSON if there were any such guarantee in the Etherscan API.
+        const responseText = await response.body.text();
+        throw new NomicLabsHardhatPluginError(
+            pluginName,
+            `Failed to send contract verification request.
+Endpoint URL: ${url}
+The HTTP server response is not ok. Status code: ${response.statusCode} Response text: ${responseText}`,
+        );
+    }
+
     const json = (await response.body.json()) as VerifyResponse;
 
     if (json.message !== 'OK') {
