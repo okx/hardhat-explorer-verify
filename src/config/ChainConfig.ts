@@ -14,8 +14,36 @@ export const chainConfig: ChainConfig = {
         chainId: 195,
         urls: {
             apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER_TESTNET',
-            browserURL: 'https://www.oklink.com/zh-hans/xlayer-test'
+            browserURL: 'https://www.oklink.com/xlayer-test'
         }
+    },
+    gravity: {
+        chainId: 1625,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/GRAVITY',
+            browserURL: 'https://www.oklink.com/gravity-alpha'
+        }
+    },
+    bsquared: {
+        chainId: 223,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/B2',
+            browserURL: 'https://www.oklink.com/bsquared'
+        },
+    },
+    bitlayer: {
+        chainId: 200901,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/BITLAYER',
+            browserURL: 'https://www.oklink.com/bitlayer'
+        },
+    },
+    blast: {
+        chainId: 81457,
+        urls: {
+            apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/BLAST',
+            browserURL: 'https://www.oklink.com/blast'
+        },
     },
     sepolia: {
         chainId: 11155111,
@@ -24,7 +52,6 @@ export const chainConfig: ChainConfig = {
             browserURL: 'https://www.oklink.com/zh-hans/sepolia-test',
         },
     },
-
     mainnet: {
         chainId: 1,
         urls: {
