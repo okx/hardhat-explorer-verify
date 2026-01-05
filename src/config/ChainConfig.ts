@@ -7,14 +7,14 @@ export const chainConfig: ChainConfig = {
         chainId: 196,
         urls: {
             apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER',
-            browserURL: 'https://www.oklink.com/xlayer'
+            browserURL: 'https://www.oklink.com/x-layer'
         }
     },
-    xlayertest: {
-        chainId: 195,
+    xlayerTestnet: {
+        chainId: 1952,
         urls: {
             apiURL: 'https://www.oklink.com/api/v5/explorer/contract/verify-source-code-plugin/XLAYER_TESTNET',
-            browserURL: 'https://www.oklink.com/xlayer-test'
+            browserURL: 'https://www.oklink.com/x-layer-testnet'
         }
     },
     gravity: {
